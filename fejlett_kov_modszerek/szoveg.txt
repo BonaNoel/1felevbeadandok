@@ -1,0 +1,47 @@
+Szerkesztő:
+Abafi Bea
+Dalos Rezső
+Gémes Imre
+Joszkin Ede
+Pálos Kata
+
+Nap:
+hétfő
+kedd
+szerda
+csütörtök
+péntek
+
+Könyvcím:
+Csengő
+Dobos Torta
+Márányfejek
+Túl Mindenen
+Zene-bona
+
+Ár:
+1500 forint
+1700 forint
+2000 forint
+2200 forint
+2350 forint
+
+Állítások:
+1. Sem a hétfőn boltokba került könyvet, sem a Csengő című önéletrajzot nem női szerkesztő dolgozta át.
+
+2. Mind a két előbb említett mű kevesebbe kerül, mint az Abafi Bea által átszerkesztett könyv, ami egy nappal a Joszkin Ede keze munkáját dícsérő kiadvány előtt jelent meg.
+
+3. A Túl Mindenen drágább, mint a Dalos Rezső szerkesztése.
+
+4. A Márányfejek-et csütörtök óta lehet kapni.
+
+5. Az 1700 forintos önéletrajzot Pálos Kata öntötte vésgő formába; ez a mű a már a Márányfejek előtt a boltokban volt.
+
+6. A szerdai megjelenésű könyv volt az öt közül a legolcsóbb.
+
+7. A Dobos Torta ára 2350 forint.
+
+8. Gémes Imre a rock-sztár kéziratát szerkesztette át.
+
+A megadott információk alapján állapítsa meg, hogy az egyes élettörténetek a hét melyik napján jelentek meg (minden napra egy kötet ... ), ki volt a szerkesztőjük, és mennyibe kerülnek.
+
