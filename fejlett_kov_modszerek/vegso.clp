@@ -1,4 +1,4 @@
-(deffacts init
+(deffacts tenyek
     (nap 1) (nap 2) (nap 3) (nap 4) (nap 5)
 )
 
