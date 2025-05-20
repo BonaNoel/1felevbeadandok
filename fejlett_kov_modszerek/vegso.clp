@@ -4,7 +4,7 @@
 
 (defrule pupi 
     ;1. Sem a hétfőn boltokba került könyvet, sem a Csengő című önéletrajzot nem női szerkesztő dolgozta át. 
-    ; hetfoi megjelenesu konyv = szerkezto (nem abafibea es nem paloskata)
+    ; hetfoi megjelenesu konyv es csengo konyv = szerkezto ferfi
 
     (nap ?REZSO)
     (nap ?IMRE&~?REZSO)
@@ -73,7 +73,7 @@
     )
     
 
-    ;abafi bea konyv -> nap = 1 - joszkinede konyv
+    ;ede konyv napja - 1 = bea konyv napja
     (test (= (- ?EDE ?BEA) 1))
 
 
@@ -121,7 +121,7 @@
 
 
     ;5. Az 1700 forintos önéletrajzot Pálos Kata öntötte vésgő formába; ez a mű a már a Márányfejek előtt a boltokban volt. 
-    ; 1700 forintos konyv = paloskata szerzo es hetfon vagy kedden jelent meg (szerda nem lehet mert az 1500 ft 6.)
+    ; 1700 forintos konyv = paloskata szerzo es maranyfejek elott
     (nap ?KATA&~?BEA&~?EDE&~?IMRE&~?REZSO)
 
     (nap ?KATA&?TIZENHET)
@@ -130,21 +130,21 @@
 
 
     ;6. A szerdai megjelenésű könyv volt az öt közül a legolcsóbb. 
-    ; szerdai konyv =  ara (nem 1700 es nem 2000 es nem 2200 es nem 2350)
+    ; szerdai konyv =  ara 1500
     (nap ?SZERDA&~?CSUTORTOK&~?HETFO&3)
 
     (nap ?SZERDA&?TIZENOT)
 
 
     ;7. A Dobos Torta ára 2350 forint. 
-    ; dobostorta konyv = ara (nem 1500 es nem 1700 es nem 2000 es nem 2200)
+    ; dobostorta konyv = ara 2350
     (nap ?DOBOSTORTA&~?MARANYFEJEK&~?TULMINDENEN&~?CSENGO)
 
     (nap ?DOBOSTORTA&?HUSZONHAROM)
 
 
     ;8. Gémes Imre a rock-sztár kéziratát szerkesztette át. 
-    ; zenebona cimu konyv ) = szerkeszto (nem dalosrezso es nem joszkinede es nem paloskata es nem abafibea)
+    ; szerkezsztok Imre = zenebona cimu konyv
     (nap ?ZENEBONA&~?DOBOSTORTA&~?MARANYFEJEK&~?TULMINDENEN&~?CSENGO)
 
     (nap ?IMRE&?ZENEBONA)
