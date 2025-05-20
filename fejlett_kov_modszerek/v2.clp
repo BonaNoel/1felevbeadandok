@@ -37,23 +37,10 @@
     ;2. Mind a két előbb említett mű kevesebbe kerül, mint az Abafi Bea által átszerkesztett könyv, ami egy nappal a Joszkin Ede keze munkáját dícsérő kiadvány előtt jelent meg. 
     ; hetfoi konyv ara < abafibea konyv ara
     ; %%%%%%%% NEM JO MERT KITORLI AZ OSSZES HETFOI KONYVET KIVEVE AMI 1500 BA KERUL %%%%%%%%%%%%
-(defrule hetfo-ar-abafibea
-    ?f1 <- (konyv hetfo ?t ?e ?p) 
-    ?f2 <- (konyv ?d ?t2 abafibea ?p2)
-    (test (> ?p ?p2))
-    =>
-    (retract ?f1)
-)
 
     ; csengo konyv ara < abafibea konyv ara
     ; %%%%%%%% SAME MINT FENTI %%%%%%%%%%%%
-(defrule csengo-ar-abafibea
-    ?f1 <- (konyv ?d csengo ?e ?p)
-    ?f2 <- (konyv ?d2 ?t2 abafibea ?p2)
-    (test (> ?p ?p2))
-    =>
-    (retract ?f1)
-)
+
 
 
     ;abafi bea konyv -> nap = 1 - joszkinede konyv
@@ -65,23 +52,55 @@
 
     ;4. A Márányfejek-et csütörtök óta lehet kapni. 
     ; csutortok konyv = maranyfejek konyv
+(defrule csutortok-maranyfejek
+    ?f <- (konyv csutortok ?t ?e ?p)
+    (test (neq ?t maranyfejek))
+    =>
+    (retract ?f)
+)
 
 
     ;5. Az 1700 forintos önéletrajzot Pálos Kata öntötte vésgő formába; ez a mű a már a Márányfejek előtt a boltokban volt. 
     ; 1700 forintos konyv = paloskata szerzo es hetfon vagy kedden jelent meg (szerda nem lehet mert az 1500 ft 6.)
+; (defrule paloskata-1700
+;     ?f <- (konyv ?d ?t paloskata 1700)
+;     (or (test (eq ?d szerda))
+;         (test (eq ?d csutortok))
+;         (test (eq ?d pentek))
+;         (test (eq ?t maranyfejek)))
+;     =>
+;     (retract ?f)
+; )
+
+(defrule ar-1700-paloskata
+    ?f <- (konyv ?d ?t ?e 1700)
+    (test (neq ?e paloskata))
+    =>  
+    (retract ?f)
+)
+
+(defrule paloskata-ar-1700
+    ?f <- (konyv ?d ?t paloskata ?p)
+    (test (neq ?p 1700))
+    =>
+    (retract ?f)
+)
 
     ;6. A szerdai megjelenésű könyv volt az öt közül a legolcsóbb. 
     ; szerdai konyv =  ara (nem 1700 es nem 2000 es nem 2200 es nem 2350)
 (defrule szerdai-konyv-ara
     ?f <- (konyv szerda ?d ?e ?p)
-    (or (test (eq ?p 1700))
-        (test (eq ?p 2000))
-        (test (eq ?p 2200))
-        (test (eq ?p 2350)))
+    (test (neq ?p 1500))
     =>
     (retract ?f)
 )
 
+(defrule ar-1500
+    ?f <- (konyv ?d ?t ?e 1500)
+    (test (neq ?d szerda))
+    =>
+    (retract ?f)
+)
 
     ;7. A Dobos Torta ára 2350 forint. 
     ; dobostorta konyv = ara (nem 1500 es nem 1700 es nem 2000 es nem 2200)
@@ -95,14 +114,26 @@
     (retract ?f)
 )
 
+(defrule ar-2350
+    ?f <- (konyv ?d ?t ?e 2350)
+    (test (neq ?t dobostorta))
+=>
+    (retract ?f)
+)
+
+
     ;8. Gémes Imre a rock-sztár kéziratát szerkesztette át. 
     ; zenebona cimu konyv ) = szerkeszto (nem dalosrezso es nem joszkinede es nem paloskata es nem abafibea)
 (defrule gemesimre-zenebona
     ?f <- (konyv ?d zenebona ?e ?p)
-    (or (test (eq ?e dalosrezso))
-        (test (eq ?e joszkinede))
-        (test (eq ?e paloskata)))
-        (test (eq ?e abafibea)) 
+    (test (neq ?e gemesimre))
+    =>
+    (retract ?f)
+)
+
+(defrule szerkeszto-gemesimre
+    ?f <- (konyv ?d ?t gemesimre ?p)
+    (test (neq ?t zenebona))
     =>
     (retract ?f)
 )
